@@ -315,7 +315,7 @@ class _LoginPageState extends State<LoginPage> {
                                 if (credential.user!.emailVerified) {
                                   Navigator.pushNamed(
                                       context,
-                                      'DashboardPage',arguments:email.text);
+                                      'Dashboard',arguments:email.text);
 
                                 } else {
                                   AwesomeDialog(

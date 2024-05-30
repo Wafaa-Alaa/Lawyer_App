@@ -13,7 +13,7 @@ class Fire_User extends GetxController {
   CollectionReference users = FirebaseFirestore.instance.collection('users');
   GlobalKey<FormState> formstate = GlobalKey();
   addUser(String n, String e, String p, String l, String s, String w,
-      String uid,String im) async {
+      String uid,String im,int r) async {
     ///// check to user to enter value in textfield
     DocumentReference response = await users.add({
       'fullName': n,
@@ -24,13 +24,14 @@ class Fire_User extends GetxController {
       'workE': w,
       'uid': uid,
       'image':im,
+      'rateing':r,
 
     });
   }
 
 //////////////////////////////////
   addlUser(String n, String e, String p, String l, String s, String w,
-      String uid,String im) async {
+      String uid,String im,int r) async {
     var collectionRef = FirebaseFirestore.instance.collection('users');
 
     // Create a new document
@@ -50,6 +51,7 @@ class Fire_User extends GetxController {
       'uid': uid,
       'id': docId,
       'image':im,
+      'rateing':r,
     };
 
     // Set the data to the document

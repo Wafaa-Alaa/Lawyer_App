@@ -436,6 +436,7 @@ class _SignUp_PageState extends State<SignUp_Page> {
                                     email.text,
                                     FirebaseAuth.instance.currentUser!.uid,
                                    user.url!,
+                                    7,
                                     );
                                 AwesomeDialog(
                                   context: context,

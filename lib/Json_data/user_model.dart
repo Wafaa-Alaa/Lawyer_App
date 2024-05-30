@@ -6,11 +6,13 @@ class UserModel {
   final String specialization;
   final String workE;
   final String image;
+  final int rateing;
   String? uid;
   String? id;
   UserModel({
     this.uid,
     this.id,
+    required this.rateing,
     required this.fullName,
     required this.email,
     required this.phone,
@@ -30,6 +32,7 @@ class UserModel {
       uid: jsonData['uid'],
       id: jsonData['id'],
       image:jsonData['image'],
+      rateing:jsonData['rateing'],
     );
   }
 }

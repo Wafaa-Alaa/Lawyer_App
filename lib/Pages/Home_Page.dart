@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:project/Json_data/List_Statement.dart';
 import 'package:project/Json_data/List_rating.dart';
+import 'package:project/Pages/All_Lawyers.dart';
+import 'package:project/Pages/BestLawyers.dart';
 import 'package:project/Pages/Edit_Profile.dart';
 import 'package:project/Pages/HomePage_2.dart';
 import 'package:project/Pages/SignUp_Page.dart';
@@ -352,7 +354,7 @@ User? currentUser;
                       SizedBox(
                         height: 30,
                       ),
-                      Column(
+                      BestLawyers(),/*Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: List.generate(rating.length, (index) {
@@ -389,7 +391,21 @@ User? currentUser;
                             ),
                           );
                         }),
-                      )
+                      )*/
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Text(
+                        'All Lawyers ',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                      SizedBox(
+                        height: 30,
+                      ),
+                      All_Lawyers(),
                     ],
                   ),
                 ),
