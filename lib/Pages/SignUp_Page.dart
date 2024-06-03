@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class SignUp_Page extends StatefulWidget {
   State<SignUp_Page> createState() => _SignUp_PageState();
 }
 
-class _SignUp_PageState extends State<SignUp_Page> {
+class _SignUp_PageState extends State<SignUp_Page>{
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -437,6 +438,8 @@ class _SignUp_PageState extends State<SignUp_Page> {
                                     FirebaseAuth.instance.currentUser!.uid,
                                    user.url!,
                                     7,
+                                  'waff',
+
                                     );
                                 AwesomeDialog(
                                   context: context,

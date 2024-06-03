@@ -1,9 +1,10 @@
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:project/Json_data/List_Statement.dart';
-import 'package:project/Json_data/List_rating.dart';
 import 'package:project/Pages/All_Lawyers.dart';
 import 'package:project/Pages/BestLawyers.dart';
 import 'package:project/Pages/Edit_Profile.dart';
@@ -20,7 +21,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _HomePageState extends State<HomePage>  {
+
   GlobalKey<ScaffoldState> key = GlobalKey();
 
   List<QueryDocumentSnapshot> data = [];
@@ -29,10 +31,7 @@ class _HomePageState extends State<HomePage> {
 User? currentUser;
   CollectionReference users = FirebaseFirestore.instance.collection('users');
   bool isLoading=false;
-  @override
-  void initState() {
-    super.initState();
-  }
+
  Future<void> getCurrentUser() async {
     try {
       currentUser = FirebaseAuth.instance.currentUser;
@@ -315,28 +314,33 @@ User? currentUser;
                           child: Row(
                               children:
                                   List.generate(statement.length, (index) {
-                            return Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Container(
-                                height: 200,
-                                width: 95,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(25),
-                                  color: statement[index]['color'],
-                                ),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsets.all(5),
-                                      child: statement[index]['title'],
-                                    ),
-                                    SizedBox(
-                                      height: 30,
-                                    ),
-                                    statement[index]['image']
-                                  ],
+                            return GestureDetector(
+                              onTap: (){
+                                Navigator.pushNamed(context,'VideoPlayer');
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Container(
+                                  height: 200,
+                                  width: 95,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(25),
+                                    color: statement[index]['color'],
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsets.all(5),
+                                        child: statement[index]['title'],
+                                      ),
+                                      SizedBox(
+                                        height: 30,
+                                      ),
+                                      statement[index]['image']
+                                    ],
+                                  ),
                                 ),
                               ),
                             );

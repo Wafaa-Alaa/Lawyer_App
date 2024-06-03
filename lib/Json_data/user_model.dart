@@ -7,11 +7,13 @@ class UserModel {
   final String workE;
   final String image;
   final int rateing;
+  final String status;
   String? uid;
   String? id;
-  UserModel({
+  UserModel( {
     this.uid,
     this.id,
+    required this.status,
     required this.rateing,
     required this.fullName,
     required this.email,
@@ -33,6 +35,7 @@ class UserModel {
       id: jsonData['id'],
       image:jsonData['image'],
       rateing:jsonData['rateing'],
+      status: jsonData['status'],
     );
   }
 }

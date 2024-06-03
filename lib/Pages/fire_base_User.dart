@@ -31,7 +31,7 @@ class Fire_User extends GetxController {
 
 //////////////////////////////////
   addlUser(String n, String e, String p, String l, String s, String w,
-      String uid,String im,int r) async {
+      String uid,String im,int r,String status) async {
     var collectionRef = FirebaseFirestore.instance.collection('users');
 
     // Create a new document
@@ -52,6 +52,7 @@ class Fire_User extends GetxController {
       'id': docId,
       'image':im,
       'rateing':r,
+      'status':status,
     };
 
     // Set the data to the document
