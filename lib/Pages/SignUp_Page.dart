@@ -22,6 +22,11 @@ class _SignUp_PageState extends State<SignUp_Page>{
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
+  TextEditingController conf_password = TextEditingController();
+  TextEditingController specilization = TextEditingController();
+  TextEditingController location = TextEditingController();
+  TextEditingController workE = TextEditingController();
+  TextEditingController phone = TextEditingController();
   GlobalKey<FormState> formstate = GlobalKey();
   Fire_User user = Fire_User();
   bool isLoading = false;
@@ -162,6 +167,9 @@ class _SignUp_PageState extends State<SignUp_Page>{
                               height: 1,
                             ),
                             TextFormField(
+                              onChanged: (data) {
+                                username.text = data;
+                              },
                               validator: (data) {
                                 if (data == "") return 'Cant To be Empty !';
                               },
@@ -354,6 +362,192 @@ class _SignUp_PageState extends State<SignUp_Page>{
                         SizedBox(
                           height: 15,
                         ),
+                        ////////////////////////////
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Specilization',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 1,
+                            ),
+                            TextFormField(
+                              onChanged: (data) {
+                                specilization.text = data;
+                              },
+                              validator: (data) {
+                                if (data == "") return 'Cant To be Empty !';
+                              },
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      )),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xff66280E),
+                                      )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      )),
+                                  prefixIcon: Icon(Icons.person),
+                                  prefixIconColor:
+                                  Colors.black.withOpacity(0.4),
+                                  hintText: 'egyptionlaw',
+                                  hintStyle: TextStyle(
+                                    color: Colors.black.withOpacity(0.4),
+                                  )),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Location',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 1,
+                            ),
+                            TextFormField(
+                              onChanged: (data) {
+                                location.text = data;
+                              },
+                              validator: (data) {
+                                if (data == "") return 'Cant To be Empty !';
+                              },
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      )),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xff66280E),
+                                      )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      )),
+                                  prefixIcon: Icon(Icons.person),
+                                  prefixIconColor:
+                                  Colors.black.withOpacity(0.4),
+                                  hintText: 'egyptionlaw',
+                                  hintStyle: TextStyle(
+                                    color: Colors.black.withOpacity(0.4),
+                                  )),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Work Experience',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 1,
+                            ),
+                            TextFormField(
+                              onChanged: (data) {
+                                workE.text = data;
+                              },
+                              validator: (data) {
+                                if (data == "") return 'Cant To be Empty !';
+                              },
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      )),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xff66280E),
+                                      )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      )),
+                                  prefixIcon: Icon(Icons.person),
+                                  prefixIconColor:
+                                  Colors.black.withOpacity(0.4),
+                                  hintText: 'egyptionlaw',
+                                  hintStyle: TextStyle(
+                                    color: Colors.black.withOpacity(0.4),
+                                  )),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Phone Number',
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 1,
+                            ),
+                            TextFormField(
+                              onChanged: (data) {
+                                phone.text = data;
+                              },
+                              validator: (data) {
+                                if (data == "") return 'Cant To be Empty !';
+                              },
+                              decoration: InputDecoration(
+                                  border: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.black,
+                                      )),
+                                  enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xff66280E),
+                                      )),
+                                  focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Colors.blue,
+                                      )),
+                                  prefixIcon: Icon(Icons.person),
+                                  prefixIconColor:
+                                  Colors.black.withOpacity(0.4),
+                                  hintText: 'egyptionlaw',
+                                  hintStyle: TextStyle(
+                                    color: Colors.black.withOpacity(0.4),
+                                  )),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        ///////////////////////////
                         Center(
                           child: Container(
                             height: 80,
@@ -415,30 +609,17 @@ class _SignUp_PageState extends State<SignUp_Page>{
                                   password: password.text,
                                 );
                                 user.email = email.text;
-                                /* user.addUser(
-                                    email.text,
-                                    password.text,
-                                    email.text,
-                                    email.text,
-                                    password.text,
-                                    email.text,
-                                    FirebaseAuth.instance.currentUser!.uid);
-                                String id = FirebaseFirestore.instance
-                                    .collection('users')
-                                    .doc()
-                                    .id;
-                                print('id===== $id');*/
                                 user.addlUser(
+                                    username.text,
                                     email.text,
-                                    password.text,
-                                    email.text,
-                                    email.text,
-                                    password.text,
-                                    email.text,
+                                    phone.text,
+                                    location.text,
+                                    specilization.text,
+                                    workE.text,
                                     FirebaseAuth.instance.currentUser!.uid,
-                                   user.url!,
+                                    user.url!,
                                     7,
-                                  'waff',
+                                  'online',
 
                                     );
                                 AwesomeDialog(

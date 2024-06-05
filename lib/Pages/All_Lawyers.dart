@@ -56,7 +56,7 @@ class _All_LawyersState extends State<All_Lawyers> {
                             ),
                             Column(
                               children: [
-                                Text(userdata[index].email,style:TextStyle(
+                                Text(userdata[index].fullName,style:TextStyle(
                                   fontSize: 17,
                                   fontWeight: FontWeight.w900,
                                 ),),

@@ -22,7 +22,7 @@ class _EditProfileState extends State<EditProfile> {
   CollectionReference users = FirebaseFirestore.instance.collection('users');
   final currentUser = FirebaseAuth.instance.currentUser!;
   File? file;
-  bool isLoading=false;
+  bool isLoading = false;
 
   @override
   void initState() {
@@ -30,7 +30,7 @@ class _EditProfileState extends State<EditProfile> {
   }
 
   Fire_User user = Fire_User();
-  TextEditingController name = TextEditingController();
+  TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController phone = TextEditingController();
   TextEditingController location = TextEditingController();
@@ -52,11 +52,8 @@ class _EditProfileState extends State<EditProfile> {
       var refStoreg = FirebaseStorage.instance.ref(imagename);
       await refStoreg.putFile(file!);
       url = await refStoreg.getDownloadURL();
-      
     }
-    setState(() {
-    
-    });
+    setState(() {});
   }
 
   @override
@@ -69,13 +66,13 @@ class _EditProfileState extends State<EditProfile> {
             for (int i = 0; i < snapshot.data!.docs.length; i++) {
               userdata.add(UserModel.fromJson(snapshot.data!.docs[i]));
             }
-            name.text = userdata[0].fullName;
+            username.text = userdata[0].fullName;
             email.text = userdata[0].email;
             location.text = userdata[0].location;
             phone.text = userdata[0].phone;
             specialization.text = userdata[0].specialization;
             workE.text = userdata[0].workE;
-            im=userdata[0].image;
+            im = userdata[0].image;
             return Scaffold(
                 backgroundColor: Colors.white,
                 body: Padding(
@@ -139,49 +136,52 @@ class _EditProfileState extends State<EditProfile> {
                                       )),
                                 )
                               ]),*/
-                                Padding(
-                                  padding: const EdgeInsets.all(8),
-                         child: ModalProgressHUD(
-                          inAsyncCall: isLoading,
-                          progressIndicator: CircularProgressIndicator(),
-                           child: Stack(
-                            children: [
-                              user.url==null? CircleAvatar(
-                                radius: 50,
-                                backgroundImage: NetworkImage(im!),
-                              ):CircleAvatar(
-                                radius: 50,
-                                backgroundImage: NetworkImage(user.url!),
+                              Padding(
+                                padding: const EdgeInsets.all(8),
+                                child: ModalProgressHUD(
+                                  inAsyncCall: isLoading,
+                                  progressIndicator:
+                                      CircularProgressIndicator(),
+                                  child: Stack(
+                                    children: [
+                                      user.url == null
+                                          ? CircleAvatar(
+                                              radius: 50,
+                                              backgroundImage:
+                                                  NetworkImage(im!),
+                                            )
+                                          : CircleAvatar(
+                                              radius: 50,
+                                              backgroundImage:
+                                                  NetworkImage(user.url!),
+                                            ),
+                                      Positioned(
+                                        child: IconButton(
+                                            onPressed: () async {
+                                              isLoading = true;
+                                              setState(() {});
+                                              user.getImage();
+                                              // getImage();
+                                              setState(() {
+                                                isLoading = false;
+                                              });
+                                            },
+                                            icon: IconButton(
+                                                onPressed: () async {
+                                                  user.getImage();
+                                                  setState(() {});
+                                                },
+                                                icon: Icon(
+                                                  Icons.edit,
+                                                  color: Colors.blue,
+                                                ))),
+                                        bottom: -10,
+                                        left: 60,
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ),
-                              Positioned(
-                                child:IconButton(
-                                onPressed: ()async{
-                                  isLoading=true;
-                                  setState(() {
-                                    
-                                  });
-                                  user.getImage();
-                                 // getImage();
-                                  setState(() {
-                                    isLoading=false;
-                                  });
-                                },
-                                icon:IconButton(
-                                  onPressed: ()async{
-                                    user.getImage();
-                                    setState(() {
-                                      
-                                    });
-                                  },
-                                 icon:Icon(Icons.edit,color: Colors.blue,))
-                                   ),
-                                bottom: -10,
-                                left: 60,
-                              )
-                            ],
-                           ),
-                         ),
-                       ),
                               SizedBox(
                                 height: 30,
                               ),
@@ -201,7 +201,7 @@ class _EditProfileState extends State<EditProfile> {
                                   children: [
                                     TextFormField(
                                         // initialValue: userdata[index].fullName,
-                                        controller: name,
+                                        controller: username,
                                         style: TextStyle(
                                           backgroundColor: Colors.white24,
                                         ),
@@ -370,9 +370,6 @@ class _EditProfileState extends State<EditProfile> {
                         })));
           } else if (snapshot.hasError) {
             return Text('No data avaible right now');
-          }
-          if (snapshot.hasError) {
-            return Text('No data avaible right now');
           } else
             return SignUp_Page();
           Center(child: CircularProgressIndicator());
@@ -383,13 +380,13 @@ class _EditProfileState extends State<EditProfile> {
   updateUser(List<UserModel> userdata) async {
     try {
       await users.doc(userdata[0].id).update({
-        'fullName': name.text,
+        'fullName': username.text,
         'email': email.text,
         'phone': phone.text,
         'location': location.text,
         'specialization': specialization.text,
         'worke': workE.text,
-        'image':user.url!=null?user.url:userdata[0].image,
+        'image': user.url != null ? user.url : userdata[0].image,
       });
     } catch (e) {
       Text('Error eccur');

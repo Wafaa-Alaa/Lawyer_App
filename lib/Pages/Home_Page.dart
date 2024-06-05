@@ -116,7 +116,7 @@ User? currentUser;
                                 width: 15,
                               ),
                               Text(
-                                userdata[0].email,
+                                userdata[0].fullName,
                                 style: TextStyle(
                                   fontWeight: FontWeight.w900,
                                   color: Color(0xff3A4859),
@@ -247,7 +247,7 @@ User? currentUser;
                     ),
                   ),*/
                   title: Text(
-                    userdata[0].email,
+                    userdata[0].fullName,
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
                       color: Color(0xff3A4859),
