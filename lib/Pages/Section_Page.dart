@@ -42,20 +42,25 @@ class _SectionPageState extends State<SectionPage> {
                   },
                   child: Wrap(
                    children: List.generate(section.length, (index){
-                     return Padding(
-                       padding: const EdgeInsets.only(right: 8,bottom: 8),
-                       child: Container(
-                         height: 200,
-                         width: 100,
-                         decoration: BoxDecoration(
-                           borderRadius: BorderRadius.circular(30),
-                           color: section[index]['color'],
-                  
+                     return GestureDetector(
+                       onTap: (){
+                         Navigator.pushNamed(context,'SpecilizationPage');
+                       },
+                       child: Padding(
+                         padding: const EdgeInsets.only(right: 8,bottom: 8),
+                         child: Container(
+                           height: 200,
+                           width: 100,
+                           decoration: BoxDecoration(
+                             borderRadius: BorderRadius.circular(30),
+                             color: section[index]['color'],
+
+                           ),
+                           child:Center(
+                             child: section[index]['title'],
+                           )
+
                          ),
-                         child:Center(
-                           child: section[index]['title'],
-                         )
-                  
                        ),
                      );
                    })
