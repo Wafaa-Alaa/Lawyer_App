@@ -1,8 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:project/Pages/Home_Page.dart';
 
 import '../Json_data/message.dart';
@@ -23,6 +20,7 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
     var email = ModalRoute.of(context)!.settings.arguments;
+    // var email='bedo30176@gmail.com'
     return StreamBuilder<QuerySnapshot>(
         stream: messages.orderBy('createdAt', descending: true).snapshots(),
         builder: (context, snapshot) {

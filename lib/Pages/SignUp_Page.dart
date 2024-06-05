@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +17,7 @@ class SignUp_Page extends StatefulWidget {
   State<SignUp_Page> createState() => _SignUp_PageState();
 }
 
-class _SignUp_PageState extends State<SignUp_Page>{
+class _SignUp_PageState extends State<SignUp_Page> {
   TextEditingController username = TextEditingController();
   TextEditingController email = TextEditingController();
   TextEditingController password = TextEditingController();
@@ -34,7 +33,7 @@ class _SignUp_PageState extends State<SignUp_Page>{
   bool hide = true;
   //////////////
   File? file;
-   String? url;
+  String? url;
   getImage() async {
     final ImagePicker picker = ImagePicker();
     // Capture a photo.
@@ -48,12 +47,10 @@ class _SignUp_PageState extends State<SignUp_Page>{
       var refStoreg = FirebaseStorage.instance.ref(imagename);
       await refStoreg.putFile(file!);
       url = await refStoreg.getDownloadURL();
-      
     }
-    setState(() {
-    
-    });
+    setState(() {});
   }
+
   /////////////
   @override
   Widget build(BuildContext context) {
@@ -78,7 +75,7 @@ class _SignUp_PageState extends State<SignUp_Page>{
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(
-                              top: 100, left: 50, right: 50),
+                              top: 100, left: 50, right: 30),
                           child: Text(
                             'DIGITAL EGYPTION LAW',
                             style: TextStyle(
@@ -92,7 +89,7 @@ class _SignUp_PageState extends State<SignUp_Page>{
                           height: 0.3,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 120, right: 80),
+                          padding: const EdgeInsets.only(left: 80, right: 80),
                           child: Text(
                             'Welcome back sir!',
                             style: TextStyle(
@@ -106,7 +103,7 @@ class _SignUp_PageState extends State<SignUp_Page>{
                           height: 20,
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(left: 150, right: 80),
+                          padding: const EdgeInsets.only(left: 120, right: 80),
                           child: Container(
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(3),
@@ -125,34 +122,35 @@ class _SignUp_PageState extends State<SignUp_Page>{
                             ),
                           ),
                         ),
-                       Padding(
-                         padding: const EdgeInsets.only(left:120,top: 8,bottom: 8),
-                         child: Stack(
-                          children: [
-                            user.url != null?
-                             CircleAvatar(
-                              radius: 50,
-                              backgroundImage: NetworkImage(user.url!),
-                            ): CircleAvatar(
-                              radius: 50,
-                              backgroundImage: NetworkImage('https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png'),
-                            ),
-                            Positioned(
-                              child:IconButton(
-                              onPressed: ()async{
-                                user.getImage();
-                               // getImage();
-                                setState(() {
-                                  
-                                });
-                              },
-                              icon:Icon(Icons.add_a_photo) ),
-                              bottom: -10,
-                              left: 60,
-                            )
-                          ],
-                         ),
-                       ),
+                        Padding(
+                          padding: const EdgeInsets.only(
+                              left: 120, top: 8, bottom: 8),
+                          child: Stack(
+                            children: [
+                              user.url != null
+                                  ? CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage: NetworkImage(user.url!),
+                                    )
+                                  : CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage: NetworkImage(
+                                          'https://www.pngmart.com/files/22/User-Avatar-Profile-Download-PNG-Isolated-Image.png'),
+                                    ),
+                              Positioned(
+                                child: IconButton(
+                                    onPressed: () async {
+                                      user.getImage();
+                                      // getImage();
+                                      setState(() {});
+                                    },
+                                    icon: Icon(Icons.add_a_photo)),
+                                bottom: -10,
+                                left: 60,
+                              )
+                            ],
+                          ),
+                        ),
                         Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -386,19 +384,19 @@ class _SignUp_PageState extends State<SignUp_Page>{
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.black,
-                                      )),
+                                    color: Colors.black,
+                                  )),
                                   enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xff66280E),
-                                      )),
+                                    color: Color(0xff66280E),
+                                  )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.blue,
-                                      )),
+                                    color: Colors.blue,
+                                  )),
                                   prefixIcon: Icon(Icons.person),
                                   prefixIconColor:
-                                  Colors.black.withOpacity(0.4),
+                                      Colors.black.withOpacity(0.4),
                                   hintText: 'egyptionlaw',
                                   hintStyle: TextStyle(
                                     color: Colors.black.withOpacity(0.4),
@@ -432,19 +430,19 @@ class _SignUp_PageState extends State<SignUp_Page>{
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.black,
-                                      )),
+                                    color: Colors.black,
+                                  )),
                                   enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xff66280E),
-                                      )),
+                                    color: Color(0xff66280E),
+                                  )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.blue,
-                                      )),
+                                    color: Colors.blue,
+                                  )),
                                   prefixIcon: Icon(Icons.person),
                                   prefixIconColor:
-                                  Colors.black.withOpacity(0.4),
+                                      Colors.black.withOpacity(0.4),
                                   hintText: 'egyptionlaw',
                                   hintStyle: TextStyle(
                                     color: Colors.black.withOpacity(0.4),
@@ -478,19 +476,19 @@ class _SignUp_PageState extends State<SignUp_Page>{
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.black,
-                                      )),
+                                    color: Colors.black,
+                                  )),
                                   enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xff66280E),
-                                      )),
+                                    color: Color(0xff66280E),
+                                  )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.blue,
-                                      )),
+                                    color: Colors.blue,
+                                  )),
                                   prefixIcon: Icon(Icons.person),
                                   prefixIconColor:
-                                  Colors.black.withOpacity(0.4),
+                                      Colors.black.withOpacity(0.4),
                                   hintText: 'egyptionlaw',
                                   hintStyle: TextStyle(
                                     color: Colors.black.withOpacity(0.4),
@@ -524,19 +522,19 @@ class _SignUp_PageState extends State<SignUp_Page>{
                               decoration: InputDecoration(
                                   border: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.black,
-                                      )),
+                                    color: Colors.black,
+                                  )),
                                   enabledBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Color(0xff66280E),
-                                      )),
+                                    color: Color(0xff66280E),
+                                  )),
                                   focusedBorder: OutlineInputBorder(
                                       borderSide: BorderSide(
-                                        color: Colors.blue,
-                                      )),
+                                    color: Colors.blue,
+                                  )),
                                   prefixIcon: Icon(Icons.person),
                                   prefixIconColor:
-                                  Colors.black.withOpacity(0.4),
+                                      Colors.black.withOpacity(0.4),
                                   hintText: 'egyptionlaw',
                                   hintStyle: TextStyle(
                                     color: Colors.black.withOpacity(0.4),
@@ -610,18 +608,17 @@ class _SignUp_PageState extends State<SignUp_Page>{
                                 );
                                 user.email = email.text;
                                 user.addlUser(
-                                    username.text,
-                                    email.text,
-                                    phone.text,
-                                    location.text,
-                                    specilization.text,
-                                    workE.text,
-                                    FirebaseAuth.instance.currentUser!.uid,
-                                    user.url!,
-                                    7,
+                                  username.text,
+                                  email.text,
+                                  phone.text,
+                                  location.text,
+                                  specilization.text,
+                                  workE.text,
+                                  FirebaseAuth.instance.currentUser!.uid,
+                                  user.url!,
+                                  7,
                                   'online',
-
-                                    );
+                                );
                                 AwesomeDialog(
                                   context: context,
                                   dialogType: DialogType.warning,
@@ -637,10 +634,8 @@ class _SignUp_PageState extends State<SignUp_Page>{
 
                                 ScaffoldMessenger.of(context).showSnackBar(
                                     SnackBar(content: Text('Success')));
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (_) => LoginPage()));
+                                Navigator.pushNamed(context, 'LoginPage',
+                                    arguments: email.text);
                               } on FirebaseAuthException catch (e) {
                                 if (e.code == 'weak-password') {
                                   ScaffoldMessenger.of(context).showSnackBar(

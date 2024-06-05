@@ -53,6 +53,7 @@ class _LawyerAppState extends State<LawyerApp> {
     return MaterialApp(
       initialRoute: 'HomePage',
       routes: {
+        'LoginPage': (context) => const LoginPage(),
         'DashboardPage': (context) => const DashboardPage(),
         'ChatPage': (context) => const ChatPage(),
         //'ProfilePage':(context) => const ProfilePage(),
