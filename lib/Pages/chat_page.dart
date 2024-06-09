@@ -17,6 +17,7 @@ class _ChatPageState extends State<ChatPage> {
   CollectionReference messages =
       FirebaseFirestore.instance.collection('messages');
   List<Message> messageList = [];
+
   @override
   Widget build(BuildContext context) {
     var email = ModalRoute.of(context)!.settings.arguments;
@@ -42,17 +43,17 @@ class _ChatPageState extends State<ChatPage> {
                       ),
                       automaticallyImplyLeading: false,
                       actions: [
-                        IconButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (_) => HomePage()));
-                            },
-                            icon: Icon(
-                              Icons.arrow_forward_ios,
-                              color: Colors.black,
-                            ))
+                        // IconButton(
+                        //     onPressed: () {
+                        //       Navigator.push(
+                        //           context,
+                        //           MaterialPageRoute(
+                        //               builder: (_) => HomePage()));
+                        //     },
+                        //     icon: Icon(
+                        //       Icons.arrow_forward_ios,
+                        //       color: Colors.black,
+                        //     ))
                       ],
                     ),
                     body: Column(
