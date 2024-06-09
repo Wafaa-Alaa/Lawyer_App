@@ -23,6 +23,7 @@ void main() async {
     //webRecaptchaSiteKey: 'recaptcha-v3-site-key',
     androidProvider: AndroidProvider.debug,
   );*/
+
   runApp(LawyerApp());
 }
 
@@ -51,7 +52,11 @@ class _LawyerAppState extends State<LawyerApp> {
     //AuthController authController=Get.put(AuthController());
     //authController.decideRoute();
     return MaterialApp(
-      initialRoute: 'HomePage',
+      initialRoute: (FirebaseAuth.instance.currentUser != null &&
+              FirebaseAuth.instance.currentUser!.emailVerified)
+          ? 'DashboardPage'
+          : 'LoginPage',
+
       routes: {
         'LoginPage': (context) => const LoginPage(),
         'DashboardPage': (context) => const DashboardPage(),
@@ -66,10 +71,10 @@ class _LawyerAppState extends State<LawyerApp> {
         'SpecilizationPage': (context) => const Specilization_Page(),
       },
       debugShowCheckedModeBanner: false,
-      home: (FirebaseAuth.instance.currentUser != null &&
-              FirebaseAuth.instance.currentUser!.emailVerified)
-          ? HomePage()
-          : LoginPage(),
+      // home: (FirebaseAuth.instance.currentUser != null &&
+      //         FirebaseAuth.instance.currentUser!.emailVerified)
+      //     ? HomePage()
+      //     : LoginPage(),
     );
   }
 }
