@@ -14,7 +14,7 @@ class DashboardPage extends StatefulWidget {
 class _HomePageState extends State<DashboardPage> {
   int currentindex = 0;
   List screens = [
-   // BestLawyers(),
+    // BestLawyers(),
     HomePage(),
     SectionPage(),
     ChatPage(),
@@ -50,12 +50,13 @@ class _HomePageState extends State<DashboardPage> {
               icon: Icon(Icons.feed_outlined), label: 'Sections'),
           //BottomNavigationBarItem(icon: Icon(Icons.)),
           BottomNavigationBarItem(
-            icon: IconButton(
-              icon: Icon(Icons.chat_bubble),
-              onPressed: () {
-                Navigator.pushNamed(context, 'ChatPage', arguments: emaill);
-              },
-            ),
+            icon: Icon(Icons.chat),
+            // icon: IconButton(
+            //   icon: Icon(Icons.chat_bubble),
+            //   onPressed: () {
+            //     Navigator.pushNamed(context, 'ChatPage', arguments: emaill);
+            //   },
+            // ),
             label: 'Chat',
           ),
         ],
